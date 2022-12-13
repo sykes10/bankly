@@ -1,6 +1,6 @@
 import * as Tabs from "@radix-ui/react-tabs";
-import { Transaction as TransactionType } from "../../../types";
-import { transactions } from "../../api/data/transactions";
+import { useQuery } from "react-query";
+import type { Transaction as TransactionType, TransactionProps } from "../../../types";
 import "./index.css";
 import { Transaction } from "./item";
 
@@ -8,7 +8,7 @@ const isExpense = (transaction: TransactionType) =>
   transaction.amount.value < 0;
 const isIncome = (transaction: TransactionType) => transaction.amount.value > 0;
 
-const Expenses = () => {
+const Expenses = ({ transactions = [] }: TransactionProps) => {
   return (
     <table aria-label="Expenses">
       <thead>
@@ -27,7 +27,7 @@ const Expenses = () => {
   );
 };
 
-const Income = () => {
+const Income = ({ transactions = [] }: TransactionProps) => {
   return (
     <table aria-label="Income">
       <thead>
@@ -47,6 +47,8 @@ const Income = () => {
 };
 
 export const TransactionHistory = () => {
+  const { data: transactions, isLoading, error } = useQuery('transactions', () => fetch('/api/transactions').then(response => response.json()))
+
   return (
     <>
       <h1 className="align-left">Transaction History</h1>
@@ -57,10 +59,10 @@ export const TransactionHistory = () => {
         </Tabs.List>
 
         <Tabs.Content className="TabsContent" value="expenses">
-          <Expenses />
+          <Expenses transactions={transactions} />
         </Tabs.Content>
         <Tabs.Content className="TabsContent" value="income">
-          <Income />
+          <Income transactions={transactions} />
         </Tabs.Content>
       </Tabs.Root>
     </>

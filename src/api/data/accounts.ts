@@ -6,7 +6,7 @@ export const accounts: Array<Account> = [
     balance: {
       amount: {
         currency: "GBP",
-        value: 200000.0,
+        value: 20000.0,
       },
     },
   },

@@ -5,6 +5,12 @@ import "./index.css";
 
 import { handlers } from "./api/handlers";
 import { setupWorker } from "msw";
+import {
+  QueryClient,
+  QueryClientProvider,
+} from 'react-query'
+
+const queryClient = new QueryClient()
 
 const worker = setupWorker(...handlers);
 
@@ -17,7 +23,9 @@ async function prepare() {
 prepare().then(() =>
   ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
     <React.StrictMode>
-      <App />
+      <QueryClientProvider client={queryClient}>
+        <App />
+      </QueryClientProvider>
     </React.StrictMode>
   )
 );

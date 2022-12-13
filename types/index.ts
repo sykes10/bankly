@@ -20,3 +20,7 @@ export type Account = {
   account_id: string;
   balance: Balance;
 }
+
+export type TransactionProps = {
+  transactions: Transaction[]
+}
