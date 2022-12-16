@@ -3,6 +3,11 @@
   grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
   gap: var(--spacer-large);
 }
+@media only screen and (min-width: 48rem) {
+  .accounts {
+    grid-template-columns: repeat(auto-fit, minmax(14rem, 15.75rem));
+  }
+}
 
 .account {
   background: var(--color-background-900);
@@ -20,4 +25,9 @@
 .amount {
   font-size: var(--font-large);
   line-height: var(--line-height-large);
+}
+
+.info-container {
+  display: flex;
+  justify-content: center;
 }

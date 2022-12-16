@@ -7,3 +7,8 @@
   align-items: flex-start;
   gap: var(--spacer-medium);
 }
+
+.TabsContent {
+  display: flex;
+  justify-content: center;
+}

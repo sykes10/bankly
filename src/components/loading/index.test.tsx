@@ -7,7 +7,9 @@ test("should render as expected", () => {
   expect(asFragment()).toMatchInlineSnapshot(`
 <DocumentFragment>
   <div
+    aria-live="assertive"
     class="loader"
+    role="alert"
   />
 </DocumentFragment>
 `);

@@ -4,7 +4,7 @@ describe('conversions', () => {
   describe('convertCurrencyToLocaleString', () => {
     test.each([
       {amount: 1, currency: 'GBP', expected: '£1.00'},
-      {amount: 1, currency: 'USD', expected: 'US$1.00'},
+      {amount: 1, currency: 'USD', expected: '$1.00'},
       {amount: 1, currency: 'EUR', expected: '€1.00'},
     ])('should convert %amount into a %expected when currency is %currency', ({amount, currency, expected}) => {
       expect(convertCurrencyToLocaleString(amount, currency as SupporterCurrencies)).toBe(expected);

@@ -51,13 +51,15 @@
   .transaction-detail {
     display: grid;
     grid-template-columns: min-content 1fr;
-    gap: var(--spacer-medium);
+    gap: 14px;
+    align-items: center;
   }
 
   .transaction-category {
     color: var(--color-text-900);
     font-size: var(--font-medium);
     line-height: 21px;
+    text-transform: capitalize;
   }
 
   .transaction-amount {
