@@ -1,20 +1,19 @@
-import { AccountItem } from "./item";
-import "./index.css";
 import { useQuery } from "react-query";
+import { useFetch } from "../../hooks/useFetch"
+import { AccountItem } from "./item";
+import { Loading } from '../loading'
 import { Account } from "../../../types";
+import "./index.css";
 
 export const Accounts = () => {
-  const { data: accounts, isLoading, error } = useQuery<Account[]>('accounts', () =>
-    fetch('/api/accounts').then(response => response.json())
-  )
+  const { data: accounts, isError, isLoading } = useQuery<Account[]>('accounts', () => useFetch('/api/accounts'), {retry: 1})
 
-  console.log({accounts, isLoading, error})
   return (
     <>
       <h1 className="align-left">Your accounts</h1>
 
-      {isLoading && '...loading'}
-      {error && `There's been an unexpected errro`}
+      {isLoading && <Loading />}
+      {isError && <p>There was an error fetching your accounts</p>}
       {accounts &&
         <div className="accounts">
           {accounts.map((account) => (

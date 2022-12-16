@@ -12,6 +12,7 @@ import { handlers } from "./src/api/handlers";
 
 // setup MSW
 export const server = setupServer(...handlers);
+
 beforeAll(() => server.listen({ onUnhandledRequest: "error" }));
 afterEach(() => server.resetHandlers());
 afterAll(() => server.close());

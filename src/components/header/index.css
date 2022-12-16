@@ -1,0 +1,11 @@
+.header {
+    border-bottom: 1px solid var(--color-background-700);
+    padding: 1.25rem 0;
+}
+
+.header .logo {
+    display: block;
+    width: 112px;
+    height: 30px;
+}
+

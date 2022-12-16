@@ -1,6 +1,8 @@
+export type SupporterCurrencies = 'USD' | 'EUR' | 'GBP' ;
+
 type Balance = {
   amount: {
-    currency: string
+    currency: SupporterCurrencies
     value: number
   }
 }
@@ -12,15 +14,11 @@ export type Transaction = {
   category: string;
   amount: {
     value: number;
-    currency_iso: string;
+    currency_iso: SupporterCurrencies;
   };
 }
 
 export type Account = {
   account_id: string;
   balance: Balance;
-}
-
-export type TransactionProps = {
-  transactions: Transaction[]
 }
